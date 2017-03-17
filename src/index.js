@@ -6,11 +6,11 @@ import * as firebase from 'firebase';
 
 // Initialize Firebase
 var config = {
-  apiKey: "AIzaSyC9RLLQWoIKfvWXD51bwXfkkWOePSPkOOc",
-  authDomain: "sugar-shack.firebaseapp.com",
-  databaseURL: "https://sugar-shack.firebaseio.com",
-  storageBucket: "sugar-shack.appspot.com",
-  messagingSenderId: "1032303393149"
+  apiKey: "AIzaSyApDGQ5w-QZr_D-8d2a1YYwKsFscaYhDXw",
+  authDomain: "remote-sugar-shack.firebaseapp.com",
+  databaseURL: "https://remote-sugar-shack.firebaseio.com",
+  storageBucket: "remote-sugar-shack.appspot.com",
+  messagingSenderId: "559865381241"
 };
 firebase.initializeApp(config);
 
