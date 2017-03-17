@@ -6,8 +6,6 @@ branches:
   only:
     - master
 
-warnings_are_errors: false
-
 before_script:
   - npm install -g firebase-tools
 
