@@ -7,41 +7,87 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      interval: 0
+      refresh_interval: null,
+      logged_in: null,
+      last_update: null
     };
   }
 
   componentDidMount() {
     const dbRef = firebase.database().ref();
-    const intervalRef = dbRef.child('interval');
+    const intervalRef = dbRef.child('refresh_interval');
+    const timestampRef = dbRef.child('timestamp')
 
+    // Get refresh interval
     intervalRef.on('value', snap => {
       this.setState({
-        interval: snap.val()
+        refresh_interval: snap.val()
       });
     });
+
+    // Get last update
+    timestampRef.limitToLast(1).on("child_added", snap => {
+      this.setState({
+        last_update: snap.key
+      });
+    });
+
+    //Checking if signed in
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        // User is signed in
+        this.setState({ 
+          logged_in: true 
+        });
+      }
+      else {
+        // User is signed out
+        this.setState({ 
+          logged_in: false 
+        });
+      }
+    }.bind(this));
   }
 
-  authenticate() {
+  login() {
     var provider = new firebase.auth.GoogleAuthProvider();
-    provider.addScope('profile');
-    provider.addScope('email');
 
     firebase.auth().signInWithPopup(provider)
       .then(result => {
         console.log(result);
-      })
+    })
+  }
+
+  logout() {
+    firebase.auth().signOut().then(function() {
+      // Sign-out successful.
+    }).catch(function(error) {
+      // An error happened.
+    });
   }
 
   render() {
-    return (
-      <div className="App">
-        <h1>{this.state.interval}</h1>
-        <button onClick={this.authenticate.bind(this)}>
-          Login with Google
-        </button>
-      </div>
-    );
+    if (this.state.logged_in) {
+      return (
+        <div className="App">
+          <h1>Refresh Interval : {this.state.refresh_interval} minutes</h1>
+          <h3>Last Update : {this.state.last_update}</h3>
+          <button onClick={this.logout.bind(this)}>
+            Logout with Google
+          </button>
+        </div>
+      );
+    }
+    else {
+      return (
+        <div className="App">
+          <p>You need to log in</p>
+          <button onClick={this.login.bind(this)}>
+            Login with Google
+          </button>
+        </div>
+      );
+    }
   }
 }
 
