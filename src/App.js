@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import * as firebase from 'firebase'
+import SimpleLineChart from './Chart';
 
 class App extends Component {
 
@@ -9,7 +10,7 @@ class App extends Component {
     this.state = {
       refresh_interval: null,
       logged_in: null,
-      last_update: null
+      last_update: null,
     };
   }
 
@@ -75,6 +76,7 @@ class App extends Component {
           <button onClick={this.logout.bind(this)}>
             Logout with Google
           </button>
+          <SimpleLineChart />
         </div>
       );
     }
