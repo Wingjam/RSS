@@ -31,4 +31,5 @@ The server is a Raspberry Pi with :
 - [ ] Translation (english-french)
 - [X] Include [Material-UI](http://www.material-ui.com)
 - [ ] SideBar
-- [ ] Secure Database
+- [ ] Secure database
+- [ ] Welcome page 
