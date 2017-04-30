@@ -1,15 +1,26 @@
 import React, { Component } from 'react';
 import './App.css';
 import * as firebase from 'firebase'
+
+// My components
 import SimpleLineChart from './Chart';
+// import SideBar from './SideBar';
+import AppBarCustom from './AppBarCustom';
+
+// Fixed menu click event
+import injectTapEventPlugin from 'react-tap-event-plugin';
+
+// Material-ui
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 class App extends Component {
 
   constructor() {
+    injectTapEventPlugin();
     super();
     this.state = {
       refresh_interval: null,
-      logged_in: null,
+      logged: null,
       last_update: null,
     };
   }
@@ -33,63 +44,41 @@ class App extends Component {
       });
     });
 
-    //Checking if signed in
+    // Checking if signed in
     firebase.auth().onAuthStateChanged(function(user) {
-      if (user) {
-        // User is signed in
-        this.setState({ 
-          logged_in: true 
-        });
-      }
-      else {
-        // User is signed out
-        this.setState({ 
-          logged_in: false 
-        });
-      }
+      console.log("User : ")
+      console.log(user)
+      this.setState({ 
+        logged: user != null 
+      });
     }.bind(this));
   }
 
   login() {
     var provider = new firebase.auth.GoogleAuthProvider();
-
     firebase.auth().signInWithPopup(provider)
-      .then(result => {
-        console.log(result);
-    })
   }
 
   logout() {
-    firebase.auth().signOut().then(function() {
-      // Sign-out successful.
-    }).catch(function(error) {
-      // An error happened.
-    });
+    firebase.auth().signOut();
   }
 
   render() {
-    if (this.state.logged_in) {
-      return (
-        <div className="App">
-          <h1>Refresh Interval : {this.state.refresh_interval} minutes</h1>
-          <h3>Last Update : {this.state.last_update}</h3>
-          <button onClick={this.logout.bind(this)}>
-            Logout with Google
-          </button>
-          <SimpleLineChart />
-        </div>
-      );
-    }
-    else {
-      return (
-        <div className="App">
-          <p>You need to log in</p>
-          <button onClick={this.login.bind(this)}>
-            Login with Google
-          </button>
-        </div>
-      );
-    }
+  return (
+    <MuiThemeProvider>
+      <div className="App">
+        <AppBarCustom logged={this.state.logged} logout={this.logout} login={this.login} />
+        {/*<SideBar />*/}
+        {this.state.logged &&
+          <div>
+            <h1>Refresh Interval : {this.state.refresh_interval} minutes</h1>
+            <h3>Last Update : {this.state.last_update}</h3>
+            <SimpleLineChart />
+          </div>
+        }
+      </div>
+    </MuiThemeProvider>
+    );
   }
 }
 

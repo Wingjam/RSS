@@ -1,6 +1,16 @@
 # Remote Sugar Shack (aka RSS)
 https://remote-sugar-shack.firebaseapp.com/
 
+## What About
+This project was generated with [Create React App](https://facebook.github.io/react/docs/installation.html#creating-a-new-application).
+
+Used Technos
+- [React](https://facebook.github.io/react/) for the front-end
+- [Firebase](https://firebase.google.com/) for the back-end (Realtime database) and hosting
+- [Travis-CI](https://travis-ci.org/) for Continious Integration and deployment
+- [Recharts](http://recharts.org) to generate beautiful charts
+- [Material-UI](http://www.material-ui.com) to implement Google's Material Design
+
 ## Objective
 TODO
 
@@ -16,3 +26,9 @@ The server is a Raspberry Pi with :
 - Used BenQ Q22W6 computer screen with HDMI cable (68.99$ at [Vision Informatique SDM](http://www.milleniummicro.ca/fr/visioninfosdm/store))
 - DVI to HDMI adapter (5.50$ each on [amazon](https://www.amazon.ca/Rankie-Gold-Plated-Female-Adapter-Converter/dp/B00ZMVGTA2/))
 - TV/Monitor Wall Mount Bracket with Full Motion Articulating Arm (18.99$ on [amazon](https://www.amazon.ca/Mounting-Dream-MD2463-Articulating-Extension/dp/B00ZKFRKIU/))
+
+## TODOs
+- [ ] Translation (english-french)
+- [X] Include [Material-UI](http://www.material-ui.com)
+- [ ] SideBar
+- [ ] Secure Database
