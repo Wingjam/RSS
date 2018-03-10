@@ -2,62 +2,122 @@ import React, { Component } from 'react';
 
 // Material-ui
 import AppBar from 'material-ui/AppBar';
+import PropTypes from 'prop-types';
+import { withStyles } from 'material-ui/styles';
 import IconButton from 'material-ui/IconButton';
-import IconMenu from 'material-ui/IconMenu';
-import MenuItem from 'material-ui/MenuItem';
-import FlatButton from 'material-ui/FlatButton';
+import Menu, { MenuItem } from 'material-ui/Menu';
+import Button from 'material-ui/Button';
+import Toolbar from 'material-ui/Toolbar';
+import Typography from 'material-ui/Typography';
+import { ListItemIcon, ListItemText } from 'material-ui/List';
+
 // Icons
-import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
-import LogoutIcon from 'material-ui/svg-icons/action/exit-to-app';
-import HelpIcon from 'material-ui/svg-icons/action/help';
+import AccountCircle from 'material-ui-icons/AccountCircle';
+import LogoutIcon from 'material-ui-icons/ExitToApp';
+import HelpIcon from 'material-ui-icons/Help';
+
+
+const styles = {
+  root: {
+    flexGrow: 1,
+  },
+  flex: {
+    flex: 1,
+  },
+  menuButton: {
+    marginLeft: -12,
+    marginRight: 20,
+  },
+};
 
 class AppBarCustom extends Component {
-
   render() {
+    const { classes } = this.props;
+
     return (
-      <AppBar
-        title="Remote Sugar Shack"
-        showMenuIconButton={false}
-        iconElementRight={this.props.logged ? <Logged logout={this.props.logout} /> : <Login login={this.props.login} />}
-      />
+      <AppBar position="static" className={classes.root}>
+        <Toolbar>
+            <Typography variant="title" color="inherit" className={classes.flex}>
+              Remote Sugar Shack
+            </Typography>
+            { this.props.logged ? <Logged logout={this.props.logout} /> : <Login login={this.props.login} /> }
+          </Toolbar>
+      </AppBar>
     );
   }
 }
 
 class Login extends Component {
-  static muiName = 'FlatButton';
-
   render() {
-    // The spread operator is used to pull variables off props
-    // Prevent Unknown prop `logout` on <div> tag
-    const { login, ...rest } = this.props
     return (
-      <FlatButton {...rest} label="Login" onTouchTap={this.props.login} />
+      <Button color="inherit" onTouchTap={this.props.login}>
+        Login
+      </Button>
     );
   }
 }
 
 class Logged extends Component {
-  static muiName = 'IconMenu';
+  state = {
+    anchorEl: null,
+  };
+
+  handleMenu = event => {
+    this.setState({ anchorEl: event.currentTarget });
+  };
+
+  handleClose = () => {
+    this.setState({ anchorEl: null });
+  };
 
   render() {
-    // The spread operator is used to pull variables off props
-    // Prevent Unknown prop `logout` on <div> tag
-    const { logout, ...rest } = this.props
+    const { anchorEl } = this.state;
+    const open = Boolean(anchorEl);
+
     return (
-      <IconMenu
-        {...rest}
-        iconButtonElement={
-          <IconButton><MoreVertIcon /></IconButton>
-        }
-        targetOrigin={{horizontal: 'right', vertical: 'top'}}
-        anchorOrigin={{horizontal: 'right', vertical: 'top'}}
-      >
-        <MenuItem primaryText="Help" leftIcon={<HelpIcon/>} />
-        <MenuItem primaryText="Sign out" onTouchTap={this.props.logout} leftIcon={<LogoutIcon/>} />
-      </IconMenu>
+      <div>
+        <IconButton
+          aria-owns={open ? 'menu-appbar' : null}
+          aria-haspopup="true"
+          onClick={this.handleMenu}
+          color="inherit"
+        >
+          <AccountCircle />
+        </IconButton>
+        <Menu
+          id="menu-appbar"
+          anchorEl={anchorEl}
+          anchorOrigin={{
+            vertical: 'top',
+            horizontal: 'right',
+          }}
+          transformOrigin={{
+            vertical: 'top',
+            horizontal: 'right',
+          }}
+          open={open}
+          onClose={this.handleClose}
+        >
+          <MenuItem>
+            <ListItemIcon>
+              <HelpIcon />
+            </ListItemIcon>
+            <ListItemText primary="Help" />
+          </MenuItem>
+          <MenuItem onTouchTap={this.props.logout}>
+            <ListItemIcon>
+                <LogoutIcon />
+            </ListItemIcon>
+            <ListItemText primary="Sign Out" />
+          </MenuItem>
+        </Menu>
+      </div>
     );
   }
 }
 
-export default AppBarCustom;
+AppBarCustom.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(AppBarCustom);
