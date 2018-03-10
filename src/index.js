@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import './index.css';
 import * as firebase from 'firebase';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 // Initialize Firebase
 var config = {
@@ -15,6 +16,10 @@ var config = {
 firebase.initializeApp(config);
 
 ReactDOM.render(
-  <App />,
+  <Router>
+    <Switch>
+      <Route exact path='/' component={App} />
+    </Switch>
+  </Router>,
   document.getElementById('root')
 );
