@@ -5,7 +5,7 @@ import statsStyle from 'assets/jss/material-dashboard-react/views/dashboardStyle
 
 class Stats extends React.Component {
     render() {
-        return 'TODO' // TODO
+        return null // TODO
     }
 }
 
