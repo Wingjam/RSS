@@ -1,21 +1,20 @@
 language: node_js
 node_js:
-  - "11"
+  - '11'
 
 branches:
   only:
     - master
 
-before_script:
-  - npm install -g firebase-tools
-
 script:
   - npm run build
-
-after_success:
-  - firebase deploy --token "$FIREBASE_TOKEN";
 
 notifications:
   email:
     on_failure: always
     on_success: change
+
+deploy:
+  provider: firebase
+  token:
+    secure: flQb1bkKBIjrcsG0hMKOdFG3srURLv1lywMAdk/KNw/1ivvfjFqaruc8i7DuLXn6e3z0SvdosK3QZXQ77hLcVRUD4DG3N8q4XNxsv4PFnr4xshDL3YJ3WJSJaJDXQjpjx2uUsiip7imhU3RRxY4LHxYtmyMOFnc8aczEpSoursMCv9kt3LwQp31nhGxJO3IH3zOdFbeFmQiIhXQZp8WDz8jptoGTr7bRPLJ8k1FA3os3I57vUn8hcxIhd9WRyNgQu3YzkJvVsDfKxhojQRp2S9Jza7BcjYFsIO23N4Pc3n5OuvcS8iCt8foUz5RHihSrkUAW+6ZH29+XSk2NlgsSFc+5mQwBS//lYh9G3cnm8EXokn23REpddSK/RgBE7Ik97Y9rBkBlCYLv3O4PJySKv3hDr9TZhushQtR9zT5RkBC74CFmeuQ2jpRpY8A6zqJl69OuSUeJiWJvbQv24ovQgxMQfl/QHQf8vp48N5m5ksj3dyfEmBy457UA2vccTQ3NQWtjylFP3BkDB3qcEIkXglaaSCHGOldB6fjRLznbXk7WUaLKNI/K4686DLqxFrbtX9fZ/WVqsQds9X+7V/ZY2W58m2a3T9HzCPvzJ9ABqp3f9PGfubGmdF5zEZADY87cOzs7e1IcHJ9+/XizsCmTOycspru39uYO7tCs9i++B2U=
