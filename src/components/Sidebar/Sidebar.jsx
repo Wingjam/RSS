@@ -2,6 +2,8 @@ import React from "react";
 import classNames from "classnames";
 import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
+import { compose } from 'redux'
+import { withNamespaces } from 'react-i18next';
 // @material-ui/core components
 import withStyles from "@material-ui/core/styles/withStyles";
 import Drawer from "@material-ui/core/Drawer";
@@ -21,7 +23,7 @@ const Sidebar = ({ ...props }) => {
   function activeRoute(routeName) {
     return props.location.pathname.indexOf(routeName) > -1 ? true : false;
   }
-  const { classes, color, logo, image, logoText, routes } = props;
+  const { classes, color, logo, image, logoText, routes, t } = props;
   var links = (
     <List className={classes.list}>
       {routes.map((prop, key) => {
@@ -57,7 +59,7 @@ const Sidebar = ({ ...props }) => {
                   )}
               </ListItemIcon>
               <ListItemText
-                primary={prop.sidebarName}
+                primary={t(prop.sidebarName)}
                 className={classes.itemText + whiteFontClasses}
                 disableTypography={true}
               />
@@ -132,4 +134,7 @@ Sidebar.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(sidebarStyle)(Sidebar);
+export default compose(
+  withStyles(sidebarStyle),
+  withNamespaces(),
+)(Sidebar)

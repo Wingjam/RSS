@@ -1,0 +1,28 @@
+{
+    "en": {
+        "home": {
+            "title": "Home",
+            "Welcome home": "Welcome home"
+        },
+        "bets": {
+            "title": "Bets",
+            "desc": "TODO"
+        },
+        "stats": {
+            "title": "Statistics"
+        }
+    },
+    "fr": {
+        "home": {
+            "title": "Accueil",
+            "Welcome home": "Bienvenue à l'accueil"
+        },
+        "bets": {
+            "title": "Paris",
+            "desc": "TODO"
+        },
+        "stats": {
+            "title": "Statistiques"
+        }
+    }
+}

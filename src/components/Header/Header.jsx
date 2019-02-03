@@ -1,6 +1,8 @@
 import React from "react";
 import classNames from "classnames";
 import PropTypes from "prop-types";
+import { compose } from 'redux'
+import { withNamespaces } from 'react-i18next';
 // @material-ui/core components
 import withStyles from "@material-ui/core/styles/withStyles";
 import AppBar from "@material-ui/core/AppBar";
@@ -20,7 +22,7 @@ function Header({ ...props }) {
     var name;
     props.routes.map((prop, key) => {
       if (prop.path === props.location.pathname) {
-        name = prop.navbarName;
+        name = props.t(prop.navbarName);
       }
       return null;
     });
@@ -61,4 +63,7 @@ Header.propTypes = {
   color: PropTypes.oneOf(["primary", "info", "success", "warning", "danger"])
 };
 
-export default withStyles(headerStyle)(Header);
+export default compose(
+  withStyles(headerStyle),
+  withNamespaces(),
+)(Header)

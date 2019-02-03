@@ -11,22 +11,22 @@ import StatsPage from 'views/Stats/Stats'
 const appRoutes = [
     {
         path: '/home',
-        sidebarName: 'Home',
-        navbarName: 'Home',
+        sidebarName: 'home:title',
+        navbarName: 'home:title',
         icon: HomeIcon,
         component: HomePage,
     },
     {
         path: '/bets',
-        sidebarName: 'Bets',
-        navbarName: 'Bets',
+        sidebarName: 'bets:title',
+        navbarName: 'bets:title',
         icon: BetsIcon,
         component: BetsPage,
     },
     {
         path: '/stats',
-        sidebarName: 'Stats',
-        navbarName: 'Stats',
+        sidebarName: 'stats:title',
+        navbarName: 'stats:title',
         icon: StatsIcon,
         component: StatsPage,
     },

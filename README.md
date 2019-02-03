@@ -10,6 +10,7 @@ Used Technos
 - [Travis-CI](https://travis-ci.org/) for Continious Integration and deployment
 - [Recharts](http://recharts.org) to generate beautiful charts
 - [Material-UI](http://www.material-ui.com) to implement Google's Material Design
+- [react-i18next](https://react.i18next.com/) for the translations
 
 ## Objective
 TODO
@@ -28,7 +29,7 @@ The server is a Raspberry Pi with :
 - TV/Monitor Wall Mount Bracket with Full Motion Articulating Arm (18.99$ on [amazon](https://www.amazon.ca/Mounting-Dream-MD2463-Articulating-Extension/dp/B00ZKFRKIU/))
 
 ## TODOs
-- [ ] Translation (english-french)
+- [X] Translation (english-french)
 - [X] Use a theme
 - [X] Include [Material-UI](http://www.material-ui.com)
 - [X] SideBar

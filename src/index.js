@@ -8,6 +8,9 @@ import { reactReduxFirebase, firebaseReducer } from 'react-redux-firebase'
 import firebase from 'firebase'
 import * as serviceWorker from 'serviceWorker'
 
+// Translation
+import './i18n';
+
 import 'assets/css/material-dashboard-react.css?v=1.5.0'
 
 import indexRoutes from 'routes/index.jsx'
