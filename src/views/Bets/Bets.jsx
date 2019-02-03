@@ -8,7 +8,9 @@ import Utils from '../../Utils';
 
 const Bets = ({ bets, firebase }) => {
     return (
-        <SimpleLineChart bets={bets} />
+        <div>
+            <SimpleLineChart bets={bets} />
+        </div>
     )
 }
 

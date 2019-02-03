@@ -1,0 +1,4 @@
+.simple-line-chart-container {
+    /* Cancel the parent's padding */
+    margin-left: -25px;
+}

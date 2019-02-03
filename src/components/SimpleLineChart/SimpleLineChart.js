@@ -1,6 +1,8 @@
 import React from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
+import './SimpleLineChart.css'
+
 const COLORS = [
     '#0088FE', // Blue
     '#00C49F', // Green
@@ -32,14 +34,14 @@ const SimpleLineChart = ({ bets }) => {
             if (name === "year")
                 return null
             else if (name === "Master")
-                return <Line key={name} type="monotone" dataKey={name} stroke={COLORS[i]} activeDot={{ r: 7 }} />
+                return <Line key={name} type="monotone" dataKey={name} stroke={COLORS[i]} strokeWidth={1.75} activeDot={{ r: 6 }} />
             else
-                return <Line key={name} type="monotone" dataKey={name} stroke={COLORS[i]} />
+                return <Line key={name} type="monotone" dataKey={name} stroke={COLORS[i]} strokeWidth={1.5} />
         })
     }
 
     return (
-        <ResponsiveContainer aspect={1.5} maxHeight={500}>
+        <ResponsiveContainer aspect={1.5} maxHeight={500} className={"simple-line-chart-container"}>
             <LineChart data={bets}>
                 <XAxis dataKey="year" />
                 <YAxis domain={['dataMin - 5', 'dataMax + 5']} />

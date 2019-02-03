@@ -23,8 +23,8 @@ const switchRoutes = (
             return prop.redirect ? (
                 <Redirect from={prop.path} to={prop.to} key={key} />
             ) : (
-                <Route path={prop.path} component={prop.component} key={key} />
-            )
+                    <Route path={prop.path} component={prop.component} key={key} />
+                )
         })}
     </Switch>
 )
