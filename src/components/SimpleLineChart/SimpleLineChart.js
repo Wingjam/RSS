@@ -1,5 +1,5 @@
 import React from 'react';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 const COLORS = [
     '#0088FE', // Blue
@@ -39,14 +39,16 @@ const SimpleLineChart = ({ bets }) => {
     }
 
     return (
-        <LineChart width={1000} height={500} data={bets} margin={{ top: 20, right: 20, left: 20, bottom: 20 }}>
-            <XAxis dataKey="year" />
-            <YAxis domain={['dataMin - 5', 'dataMax + 5']} />
-            <CartesianGrid strokeDasharray="3 3" />
-            <Tooltip />
-            <Legend />
-            {lines}
-        </LineChart>
+        <ResponsiveContainer aspect={1.5} maxHeight={500}>
+            <LineChart data={bets}>
+                <XAxis dataKey="year" />
+                <YAxis domain={['dataMin - 5', 'dataMax + 5']} />
+                <CartesianGrid strokeDasharray="3 3" />
+                <Tooltip />
+                <Legend />
+                {lines}
+            </LineChart>
+        </ResponsiveContainer>
     );
 }
 
