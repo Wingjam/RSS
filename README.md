@@ -2,7 +2,7 @@
 https://remote-sugar-shack.firebaseapp.com/
 
 ## What About
-This project was generated with [Create React App](https://facebook.github.io/react/docs/installation.html#creating-a-new-application).
+This project was generated with [Create React App](https://facebook.github.io/react/docs/installation.html#creating-a-new-application) and the [Material Dashboard React](https://www.creative-tim.com/product/material-dashboard-react) theme created by [Creative Tim](https://www.creative-tim.com) was added.
 
 Used Technos
 - [React](https://facebook.github.io/react/) for the front-end
@@ -29,7 +29,8 @@ The server is a Raspberry Pi with :
 
 ## TODOs
 - [ ] Translation (english-french)
+- [X] Use a theme
 - [X] Include [Material-UI](http://www.material-ui.com)
-- [ ] SideBar
+- [X] SideBar
 - [ ] Secure database
 - [ ] Welcome page 
