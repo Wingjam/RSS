@@ -11,7 +11,7 @@ class Home extends React.Component {
 
         return (
             <div>
-                <h1>{t('Welcome home')}</h1>
+                <h1>{t('Welcome_home')}</h1>
             </div>
         )
     }

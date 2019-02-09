@@ -2,27 +2,43 @@
     "en": {
         "home": {
             "title": "Home",
-            "Welcome home": "Welcome home"
+            "Welcome_home": "Welcome home"
         },
         "bets": {
             "title": "Bets",
             "desc": "TODO"
         },
         "stats": {
-            "title": "Statistics"
+            "title": "Statistics",
+            "year": "Year",
+            "start_date": "Start Date",
+            "end_date": "End Date",
+            "nb_boiled_days": "Nb Boiled Days",
+            "nb_notches": "Nb Notches",
+            "nb_barrels": "Nb Barrels",
+            "lbs_notch": "lbs/notch",
+            "average": "Average"
         }
     },
     "fr": {
         "home": {
             "title": "Accueil",
-            "Welcome home": "Bienvenue à l'accueil"
+            "Welcome_home": "Bienvenue à l'accueil"
         },
         "bets": {
             "title": "Paris",
             "desc": "TODO"
         },
         "stats": {
-            "title": "Statistiques"
+            "title": "Statistiques",
+            "year": "Année",
+            "start_date": "Date début",
+            "end_date": "Date fin",
+            "nb_boiled_days": "Nb jours bouillis",
+            "nb_notches": "Nb entailles",
+            "nb_barrels": "Nb barils",
+            "lbs_notch": "lbs/entaille",
+            "average": "Moyenne"
         }
     }
 }

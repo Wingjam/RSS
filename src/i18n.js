@@ -2,6 +2,10 @@ import i18n from "i18next";
 import detector from "i18next-browser-languagedetector";
 import { reactI18nextModule } from "react-i18next";
 import resources from "./translations/resources.json";
+import moment from 'moment';
+
+// locale should be imported in order for moment to know about it.
+import 'moment/locale/fr';
 
 i18n
     .use(detector)
@@ -16,5 +20,12 @@ i18n
             escapeValue: false // react already safes from xss
         }
     });
+
+// Update moment locale
+i18n.on('languageChanged', function (lng) {
+    moment.locale(lng);
+});
+moment.locale(i18n.language)
+moment.defaultFormat = "D MMM"
 
 export default i18n;
