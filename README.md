@@ -1,5 +1,6 @@
 # Remote Sugar Shack (aka RSS)
-https://remote-sugar-shack.firebaseapp.com/
+https://remote-sugar-shack.firebaseapp.com/  
+https://rss.jomartineau.ca
 
 ## What About
 This project was generated with [Create React App](https://facebook.github.io/react/docs/installation.html#creating-a-new-application) and the [Material Dashboard React](https://www.creative-tim.com/product/material-dashboard-react) theme created by [Creative Tim](https://www.creative-tim.com) was added.
