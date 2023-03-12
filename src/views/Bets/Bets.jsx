@@ -11,7 +11,6 @@ const Bets = ({ bets, t }) => {
     return (
         <div>
             <SimpleLineChart bets={bets} />
-            <p>{t("desc")}</p>
         </div>
     )
 }

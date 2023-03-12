@@ -1,5 +1,5 @@
-import React from 'react';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import React from 'react'
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts'
 
 import './SimpleLineChart.css'
 
@@ -8,10 +8,11 @@ const COLORS = [
     '#00C49F', // Green
     '#FFBB28', // Yellow
     '#FF8042', // Orange
-    '#8884d8', // Purple
+    '#A020F0', // Purple
+    '#00FFFF', // Cyan
     '#f918f9', // Pink
-    '#000000', // Black
-];
+    'red', // Red
+]
 
 // Bets sample (order by year)
 // {
@@ -29,19 +30,27 @@ const SimpleLineChart = ({ bets }) => {
     if (bets.length !== 0) {
         // Get the names of the last year
         var names = Object.keys(bets[bets.length - 1])
+        let colorIndex = 0
 
-        var lines = names.map((name, i) => {
-            if (name === "year")
-                return null
-            else if (name === "Master")
-                return <Line key={name} type="monotone" dataKey={name} stroke={COLORS[i]} strokeWidth={1.75} activeDot={{ r: 6 }} />
-            else
-                return <Line key={name} type="monotone" dataKey={name} stroke={COLORS[i]} strokeWidth={1.5} />
+        var lines = names.map(name => {
+            if (name === 'year') return null
+            else if (name === 'Master')
+                return (
+                    <Line
+                        key={name}
+                        type="monotone"
+                        dataKey={name}
+                        stroke={'#000000'}
+                        strokeWidth={5}
+                        activeDot={{ r: 6 }}
+                    />
+                )
+            else return <Line key={name} type="monotone" dataKey={name} stroke={COLORS[colorIndex++]} strokeWidth={3} />
         })
     }
 
     return (
-        <ResponsiveContainer aspect={1.5} maxHeight={500} className={"simple-line-chart-container"}>
+        <ResponsiveContainer aspect={2} className={'simple-line-chart-container'}>
             <LineChart data={bets}>
                 <XAxis dataKey="year" />
                 <YAxis domain={['dataMin - 5', 'dataMax + 5']} />
@@ -51,7 +60,7 @@ const SimpleLineChart = ({ bets }) => {
                 {lines}
             </LineChart>
         </ResponsiveContainer>
-    );
+    )
 }
 
-export default (SimpleLineChart)
+export default SimpleLineChart
